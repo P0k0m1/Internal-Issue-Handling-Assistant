@@ -1,22 +1,5 @@
 # Product Spec: Internal Issue Routing Assistant (Standalone Application)
 
-## Scope Note
-
-This document is a **specification draft only** — no implementation yet.
-
-Deliberately **not** included at this stage:
-- Frontend code
-- Backend code
-- Database table design
-- API design
-- AI features
-- Architecture diagrams
-- Git repository (setup happens later)
-
-These will be addressed in future assignments, not because they're out of
-scope for the project, but because this stage is scoped to defining the
-problem and requirements before any design or implementation begins.
-
 ## Terminology Note
 
 "Faculty" and "Department" are used interchangeably throughout this

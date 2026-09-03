@@ -1,15 +1,5 @@
 # Data Model: Internal Issue Routing Assistant
 
-Reasoning first — this describes only what the product actually needs,
-based on `product-spec.md` and `architecture.md`. No schema syntax, no
-actual table/collection definitions, no ORM code. "Faculty" here means
-the same thing as "Department" in `product-spec.md` — see that file's
-Terminology Note.
-
----
-
-## Model
-
 ### Domain
 
 **Important entities:**
@@ -56,11 +46,9 @@ Terminology Note.
 
 **State transitions** (a Request moves through, in order):
 
-`Submitted → (optionally: Clarifying) → Routed → Pending → In Progress → Resolved`
+`Submitted → Routed → Pending → In Progress → Resolved`
 
 - `Submitted` — text captured, not yet classified.
-- `Clarifying` — only entered if Classification isn't confident; loops
-  back to classification once the employee answers.
 - `Routed` — a destination (Faculty or Head-of-HR) has been decided.
 - `Pending` — sitting in its queue, "Delivered and Pending" message sent.
 - `In Progress` — a Staff Member or the Head of HR has claimed it and is

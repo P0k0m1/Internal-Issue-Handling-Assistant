@@ -2,19 +2,7 @@
 
 This is an **architecture draft, not implementation**. It reasons about
 structure, responsibility, and trust boundaries based on
-`product-spec.md`. No code, no database schema, no API design, no AI
-implementation details, and no microservices decisions are made here.
-
-## Not Yet (out of scope for this file)
-
-- No code — frontend or backend
-- No database tables/collections/indexes
-- No detailed endpoint schemas, no CI/CD, no production infrastructure
-- No AI feature implementation details
-- No unnecessary microservices — the system is treated as simply as possible
-  until a specific requirement forces a split
-
----
+`product-spec.md`. 
 
 ## Purpose + Scope
 
@@ -113,32 +101,6 @@ integration of the request-handling itself.
 7. Request Record retains the full history — including the pending →
    resolved transition and the sensitivity decision — for audit purposes,
    even after removal from the active queue.
-
-```mermaid
-flowchart TD
-    A[Employee types problem in chat] --> B{Classification confident?}
-    B -- No --> C[Ask clarifying question]
-    C --> B
-    B -- Yes --> D[Route to faculty]
-    D --> S{Sensitive request?}
-    S -- No --> R0[Faculty queue]
-    S -- Yes --> R1[Head of HR queue: restricted]
-    R0 --> E[Status: Delivered, Pending]
-    R1 --> E
-    E -.-> P[Message to employee: Pending]
-    R0 --> F0[Faculty staff reviews]
-    R1 --> F1[Head of HR reviews]
-    F0 --> G0{Resolution path}
-    F1 --> G1{Resolution path}
-    G0 -- Live chat --> J[Request fulfilled]
-    G0 -- Remote fix --> J
-    G1 -- Live chat --> J
-    G1 -- Remote fix --> J
-    J --> K[Removed from its queue]
-    K -.-> M[Message to employee: Resolved]
-```
-
----
 
 ## Trust + Resilience
 
